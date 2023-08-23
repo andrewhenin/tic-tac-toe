@@ -7,7 +7,7 @@ This is the second project in my 7-day project hackathon. It's a 1v1 tic tac toe
 
 - [x] 1. **Display Initial Game Board:** As a player, I want to see an empty 3x3 grid representing the game board when I open the game.
 
-- [ ] 2. **Take Turns:** As a player, I want to take turns with another player (or against an AI) to place my symbol (X or O) on an empty cell of the game board.
+- [x] 2. **Take Turns:** As a player, I want to take turns with another player (or against an AI) to place my symbol (X or O) on an empty cell of the game board.
 
 - [ ] 3. **Winning Condition:** As a player, I want the game to declare a winner when any player forms a line of three of their symbols horizontally, vertically, or diagonally.
 
