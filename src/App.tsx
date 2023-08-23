@@ -4,14 +4,14 @@ import './App.css';
 
 function App() {
 
-  const [board, setBoard] = useState(Array(9).fill(null));
+  const [board, setBoard] = useState(Array(9).fill(" "));
   const [player, setPlayer] = useState("x");
   const [winner, setWinner] = useState(null);
 
   const checkWinner = (board: any) => {}
 
   const handleMakeSelection = (index: number) => {
-    if (board[index] === null && !winner) {
+    if (board[index] === " " && !winner) {
       const newBoard = [...board];
       newBoard[index] = player;
       setBoard(newBoard);
@@ -55,6 +55,9 @@ function App() {
       </header>
       <div className="game-frame">
         {boardGrid()}
+      </div>
+      <div>
+        <button className="reset-button" onClick={handleReset}>Reset</button>
       </div>
     </div>
   );
