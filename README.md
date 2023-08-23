@@ -15,10 +15,10 @@ This is the second project in my 7-day project hackathon. It's a 1v1 tic tac toe
 
 - [ ] 5. **Display Player's Turn:** As a player, I want to see a visual indication of whose turn it is (displaying "Player X's Turn" or "Player O's Turn").
 
-- [ ] 6. **Undo Move:**
-As a player, I want to be able to undo my last move during the game.
+- [x] 6. **Undo Moves:**
+As a player, I want to be able to undo my move during the game.
 
-- [ ] 7. **Reset the Game:** As a player, I want to be able to reset the game to its initial state to play another round.
+- [x] 7. **Reset the Game:** As a player, I want to be able to reset the game to its initial state to play another round.
 
 ### Stetch:
 

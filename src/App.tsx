@@ -6,7 +6,8 @@ function App() {
 
   const [board, setBoard] = useState(Array(9).fill(" "));
   const [player, setPlayer] = useState("x");
-  const [winner, setWinner] = useState(null);
+  const [winner, setWinner] = useState<string|null>(null);
+  const [gameSteps, setGameSteps] = useState<Array<number>>([]);
 
   const checkWinner = (board: any) => {
     const winningLines = [
@@ -35,6 +36,7 @@ function App() {
       newBoard[index] = player;
       setBoard(newBoard);
       setPlayer(player === "x" ? "o" : "x");
+      setGameSteps([...gameSteps, index]);
     }
   }
 
@@ -42,6 +44,7 @@ function App() {
     setBoard(Array(9).fill(" "));
     setPlayer("x");
     setWinner(null);
+    setGameSteps([]);
   }
 
   const boardGrid = () => {
@@ -56,6 +59,18 @@ function App() {
       </div>
     );
   };
+
+  const handleUndo = () => {
+    if (gameSteps.length > 0) {
+      const lastStep = gameSteps.pop();
+      const newBoard = [...board];
+      if (lastStep){
+        newBoard[lastStep] = " ";
+      }
+      setBoard(newBoard);
+      setPlayer(player === "x" ? "o" : "x");
+    }
+  }
 
   // React.useEffect(() => {
   //   const calculatedWinner = checkWinner(board);
@@ -80,8 +95,9 @@ function App() {
       <div className="game-frame">
         {boardGrid()}
       </div>
-      <div>
+      <div className="buttons">
         <button className="reset-button" onClick={handleReset}>Reset</button>
+        <button className="undo-button" onClick={handleUndo}>Undo</button>
       </div>
     </div>
   );
