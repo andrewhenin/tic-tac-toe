@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 
@@ -10,7 +10,7 @@ function App() {
   const [gameSteps, setGameSteps] = useState<Array<number>>([]);
   const [boardIsFree, setBoardIsFree] = useState<boolean>(true);
 
-  const checkWinner = (board: any) => {
+  const checkWinner = (board: Array<Number>) => {
     const winningLines = [
       ["0", "1", "2"],
       ["3", "4", "5"],
@@ -23,7 +23,10 @@ function App() {
     ];
 
     for (let i = 0; i < winningLines.length; i++) {
-      const [a, b, c] = winningLines[i];
+      const line = winningLines[i];
+      const a = Number(line[0]);
+      const b = Number(line[1]);
+      const c = Number(line[2]);
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
         return board[a];
       }
@@ -39,6 +42,10 @@ function App() {
       setPlayer(player === "x" ? "o" : "x");
       setGameSteps([...gameSteps, index]);
       setBoardIsFree(false);
+      const calculatedWinner = checkWinner(board);
+      if (calculatedWinner) {
+        setWinner(calculatedWinner);
+      }
     }
   }
 
@@ -72,16 +79,13 @@ function App() {
       }
       setBoard(newBoard);
       setPlayer(player === "x" ? "o" : "x");
+      const calculatedWinner = checkWinner(board);
+      setWinner(calculatedWinner);
     }
     if (gameSteps.length === 0) {
       setBoardIsFree(true);
     }
   }
-
-  // React.useEffect(() => {
-  //   const calculatedWinner = checkWinner(board);
-  //   setWinner(calculatedWinner);
-  // }, [board]);
 
   return (
     <div className="App">
