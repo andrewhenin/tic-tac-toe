@@ -8,6 +8,7 @@ function App() {
   const [player, setPlayer] = useState("x");
   const [winner, setWinner] = useState<string|null>(null);
   const [gameSteps, setGameSteps] = useState<Array<number>>([]);
+  const [boardIsFree, setBoardIsFree] = useState<boolean>(true);
 
   const checkWinner = (board: any) => {
     const winningLines = [
@@ -37,6 +38,7 @@ function App() {
       setBoard(newBoard);
       setPlayer(player === "x" ? "o" : "x");
       setGameSteps([...gameSteps, index]);
+      setBoardIsFree(false);
     }
   }
 
@@ -45,6 +47,7 @@ function App() {
     setPlayer("x");
     setWinner(null);
     setGameSteps([]);
+    setBoardIsFree(true);
   }
 
   const boardGrid = () => {
@@ -69,6 +72,9 @@ function App() {
       }
       setBoard(newBoard);
       setPlayer(player === "x" ? "o" : "x");
+    }
+    if (gameSteps.length === 0) {
+      setBoardIsFree(true);
     }
   }
 
@@ -96,8 +102,8 @@ function App() {
         {boardGrid()}
       </div>
       <div className="buttons">
-        <button className="reset-button" onClick={handleReset}>Reset</button>
-        <button className="undo-button" onClick={handleUndo}>Undo</button>
+        <button className={boardIsFree ? "button-inactive" : "reset-button"} onClick={handleReset}>Reset</button>
+        <button className={gameSteps.length === 0 ? "button-inactive" : "undo-button"} onClick={handleUndo}>Undo</button>
       </div>
     </div>
   );
