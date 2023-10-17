@@ -6,7 +6,7 @@ function App() {
 
   const [board, setBoard] = useState(Array(9).fill(" "));
   const [player, setPlayer] = useState("x");
-  const [winner, setWinner] = useState<string|null>(null);
+  const [winner, setWinner] = useState<Number|null>(null);
   const [gameSteps, setGameSteps] = useState<Array<number>>([]);
   const [boardIsFree, setBoardIsFree] = useState<boolean>(true);
 
@@ -27,25 +27,21 @@ function App() {
       const a = Number(line[0]);
       const b = Number(line[1]);
       const c = Number(line[2]);
-      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        return board[a];
+      if (board[a] !== undefined && board[a] === board[b] && board[a] === board[c]) {
+        setWinner(board[a]);
       }
     }
-    return null;
   }
 
   const handleMakeSelection = (index: number) => {
-    if (board[index] === " " && !winner) {
+    if (board[index] === " " && winner === null) {
       const newBoard = [...board];
       newBoard[index] = player;
       setBoard(newBoard);
       setPlayer(player === "x" ? "o" : "x");
       setGameSteps([...gameSteps, index]);
       setBoardIsFree(false);
-      const calculatedWinner = checkWinner(board);
-      if (calculatedWinner) {
-        setWinner(calculatedWinner);
-      }
+      checkWinner(board);
     }
   }
 
@@ -74,17 +70,18 @@ function App() {
     if (gameSteps.length > 0) {
       const lastStep = gameSteps.pop();
       const newBoard = [...board];
-      if (lastStep){
-        newBoard[lastStep] = " ";
+      if (lastStep !== undefined){
+        newBoard[lastStep] = ' ';
       }
       setBoard(newBoard);
       setPlayer(player === "x" ? "o" : "x");
-      const calculatedWinner = checkWinner(board);
-      setWinner(calculatedWinner);
+      // checkWinner(board);
     }
     if (gameSteps.length === 0) {
       setBoardIsFree(true);
+      setGameSteps([]);
     }
+    setWinner(null);
   }
 
   return (
