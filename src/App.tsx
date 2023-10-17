@@ -23,11 +23,12 @@ function App() {
     ];
 
     for (let i = 0; i < winningLines.length; i++) {
-      const line = winningLines[i];
-      const a = Number(line[0]);
-      const b = Number(line[1]);
-      const c = Number(line[2]);
-      if (board[a] !== undefined && board[a] === board[b] && board[a] === board[c]) {
+      let line = winningLines[i];
+      let a = Number(line[0]);
+      let b = Number(line[1]);
+      let c = Number(line[2]);
+      console.log(board[a], board[b], board[c])
+      if (board[a] && board[a] === board[b] && board[b] === board[c]) {
         setWinner(board[a]);
       }
     }
@@ -44,6 +45,7 @@ function App() {
       setBoard(newBoard);
       setPlayer(player === "x" ? "o" : "x");
       setGameSteps([...gameSteps, index]);
+      console.log(gameSteps);
       checkWinner(board);
     }
   }
