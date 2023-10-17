@@ -34,13 +34,16 @@ function App() {
   }
 
   const handleMakeSelection = (index: number) => {
+    console.log("boardIsFree", boardIsFree);
+    if (gameSteps.length === 0) {
+      setBoardIsFree(false);
+    }
     if (board[index] === " " && winner === null) {
       const newBoard = [...board];
       newBoard[index] = player;
       setBoard(newBoard);
       setPlayer(player === "x" ? "o" : "x");
       setGameSteps([...gameSteps, index]);
-      setBoardIsFree(false);
       checkWinner(board);
     }
   }
