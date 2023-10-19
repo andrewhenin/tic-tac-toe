@@ -9,11 +9,11 @@ This is the second project in my 7-day project hackathon. It's a 1v1 tic tac toe
 
 - [x] 2. **Take Turns:** As a player, I want to take turns with another player (or against an AI) to place my symbol (X or O) on an empty cell of the game board.
 
-- [ ] 3. **Winning Condition:** As a player, I want the game to declare a winner when any player forms a line of three of their symbols horizontally, vertically, or diagonally.
+- [x] 3. **Winning Condition:** As a player, I want the game to declare a winner when any player forms a line of three of their symbols horizontally, vertically, or diagonally.
 
-- [ ] 4. **Draw Condition:** As a player, I want the game to declare a draw when all cells on the board are filled and no player has won.
+- [x] 4. **Draw Condition:** As a player, I want the game to declare a draw when all cells on the board are filled and no player has won.
 
-- [ ] 5. **Display Player's Turn:** As a player, I want to see a visual indication of whose turn it is (displaying "Player X's Turn" or "Player O's Turn").
+- [x] 5. **Display Player's Turn:** As a player, I want to see a visual indication of whose turn it is (displaying "Player X's Turn" or "Player O's Turn").
 
 - [x] 6. **Undo Moves:**
 As a player, I want to be able to undo my move during the game.

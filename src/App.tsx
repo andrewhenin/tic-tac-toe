@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import { title } from 'process';
 
 
 function App() {
@@ -56,6 +57,16 @@ function App() {
     setBoardIsFree(true);
   }
 
+  const titleMessage = () => {
+    if (winner) {
+      return `Winner is ${winner}!`;
+    } else if (gameSteps.length === 9) {
+      return "Draw";
+    } else {
+      return `Next player is ${player}`;
+    }
+  }
+
   const boardGrid = () => {
     return (
       <div className="game-board">
@@ -72,11 +83,10 @@ function App() {
   const handleUndo = () => {
     if (gameSteps.length > 0) {
       const lastStep = gameSteps.pop();
-      const newBoard = [...board];
       if (lastStep !== undefined){
-        newBoard[lastStep] = ' ';
+        board.splice(lastStep, 1, "");
       }
-      setBoard(newBoard);
+      console.log(board);
       setPlayer(player === "x" ? "o" : "x");
     }
     if (gameSteps.length === 0) {
@@ -101,6 +111,9 @@ function App() {
           Tic Tac Toe
         </div>
       </header>
+      <div className="game-status">
+        {titleMessage()}
+      </div>
       <div className="game-frame">
         {boardGrid()}
       </div>
