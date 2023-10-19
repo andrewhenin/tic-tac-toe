@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
 
-  const [board, setBoard] = useState(Array(9).fill(" "));
+  const [board, setBoard] = useState(Array(9).fill(""));
   const [player, setPlayer] = useState("x");
   const [winner, setWinner] = useState<Number|null>(null);
   const [gameSteps, setGameSteps] = useState<Array<number>>([]);
@@ -12,21 +12,21 @@ function App() {
 
   const checkWinner = (board: Array<Number>) => {
     const winningLines = [
-      ["0", "1", "2"],
-      ["3", "4", "5"],
-      ["6", "7", "8"],
-      ["0", "3", "6"],
-      ["1", "4", "7"],
-      ["2", "5", "8"],
-      ["0", "4", "8"],
-      ["2", "4", "6"]
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
     ];
 
     for (let i = 0; i < winningLines.length; i++) {
       let line = winningLines[i];
-      let a = Number(line[0]);
-      let b = Number(line[1]);
-      let c = Number(line[2]);
+      let a = line[0];
+      let b = line[1];
+      let c = line[2];
       console.log(board[a], board[b], board[c])
       if (board[a] && board[a] === board[b] && board[b] === board[c]) {
         setWinner(board[a]);
@@ -39,7 +39,7 @@ function App() {
     if (gameSteps.length === 0) {
       setBoardIsFree(false);
     }
-    if (board[index] === " " && winner === null) {
+    if (board[index] === "" && winner === null) {
       const newBoard = [...board];
       newBoard[index] = player;
       setBoard(newBoard);
@@ -51,7 +51,7 @@ function App() {
   }
 
   const handleReset = () => {
-    setBoard(Array(9).fill(" "));
+    setBoard(Array(9).fill(""));
     setPlayer("x");
     setWinner(null);
     setGameSteps([]);
@@ -64,7 +64,7 @@ function App() {
         {board.map((value, index) => {
           return (
             <div className="box" key={index} onClick={() => handleMakeSelection(index)}>
-              {value ? value : " "}
+              {value ? value : ""}
             </div>
           )})}
       </div>
