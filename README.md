@@ -20,7 +20,7 @@ As a player, I want to be able to undo my move during the game.
 
 - [x] 7. **Reset the Game:** As a player, I want to be able to reset the game to its initial state to play another round.
 
-### Stetch:
+### Stretch:
 
 - [ ] 1. **Player Names:** As a player, I want to enter my name or choose a character name that will be displayed on the game screen.
 
