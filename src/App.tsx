@@ -27,25 +27,23 @@ function App() {
       let a = line[0];
       let b = line[1];
       let c = line[2];
-      console.log(board[a], board[b], board[c])
       if (board[a] && board[a] === board[b] && board[b] === board[c]) {
         setWinner(board[a]);
+        console.log("here");
       }
     }
   }
 
   const handleMakeSelection = (index: number) => {
-    console.log("boardIsFree", boardIsFree);
     if (gameSteps.length === 0) {
       setBoardIsFree(false);
     }
     if (board[index] === "" && winner === null) {
-      const newBoard = [...board];
-      newBoard[index] = player;
-      setBoard(newBoard);
+      console.log(player);
+      board.splice(index, 1, player);
+      console.log(board);
       setPlayer(player === "x" ? "o" : "x");
       setGameSteps([...gameSteps, index]);
-      console.log(gameSteps);
       checkWinner(board);
     }
   }
@@ -80,7 +78,6 @@ function App() {
       }
       setBoard(newBoard);
       setPlayer(player === "x" ? "o" : "x");
-      // checkWinner(board);
     }
     if (gameSteps.length === 0) {
       setBoardIsFree(true);
