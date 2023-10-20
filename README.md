@@ -43,3 +43,13 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ## Thoughts
+
+1. I learned how to replace an item in an `Array`. The `splice` method allows you to add/remove items from an array, and this enables you to replace an item with another by removing the old one and adding the new one in the same index. The syntax is as follows:
+    ```
+    array.splice(index, items_num, item1, ..., itemX)
+    ```
+    | parameter | description |
+    | --- | --- |
+    | `index` | the index starting from which you want to add/remove an items |
+    | `items_num` | the number of items to be removed at `index` |
+    | `item1, ..., itemX` | the items to be added at `index` |
