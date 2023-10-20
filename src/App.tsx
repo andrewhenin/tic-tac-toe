@@ -29,7 +29,6 @@ function App() {
       let c = line[2];
       if (board[a] && board[a] === board[b] && board[b] === board[c]) {
         setWinner(board[a]);
-        console.log("here");
       }
     }
   }
@@ -39,9 +38,7 @@ function App() {
       setBoardIsFree(false);
     }
     if (board[index] === "" && winner === null) {
-      console.log(player);
       board.splice(index, 1, player);
-      console.log(board);
       setPlayer(player === "x" ? "o" : "x");
       setGameSteps([...gameSteps, index]);
       checkWinner(board);
@@ -85,7 +82,6 @@ function App() {
       if (lastStep !== undefined){
         board.splice(lastStep, 1, "");
       }
-      console.log(board);
       setPlayer(player === "x" ? "o" : "x");
     }
     if (gameSteps.length === 0) {
